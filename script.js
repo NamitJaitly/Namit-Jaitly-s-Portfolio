@@ -1,140 +1,71 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const rotatingContent = document.querySelector(".rotating-content");
-  const bannerRotatingItems = document.querySelectorAll(".inner-rotate p");
-  const animatedTxt = document.querySelectorAll(".section-heading span");
-  const moreSection = document.querySelector(".more-section");
-  // Personal projects — listed twice back-to-back so the horizontal
-  // gallery-animation scroll (0% -> -100%) loops seamlessly.
-  const personalProjects = [
-    {
-      name: "zyra",
-      displayName: "Zyra",
-      tagline: "Habit-building app for children",
-      tech: ["React Native", "Expo", "Node.js", "MongoDB", "Gemini AI"],
-    },
-    {
-      name: "rackTrack",
-      displayName: "RackTrack",
-      tagline: "POS & inventory management app",
-      tech: ["React", "Node.js", "MongoDB", "Gemini AI"],
-    },
-    {
-      name: "myRoots",
-      displayName: "My Roots",
-      tagline: "Family journal web app",
-      tech: ["JavaScript", "HTML5", "SCSS", "Tailwind", "Firebase"],
-    },
-    {
-      name: "zyra-2",
-      displayName: "Zyra",
-      tagline: "Habit-building app for children",
-      tech: ["React Native", "Expo", "Node.js", "MongoDB", "Gemini AI"],
-    },
-    {
-      name: "rackTrack-2",
-      displayName: "RackTrack",
-      tagline: "POS & inventory management app",
-      tech: ["React", "Node.js", "MongoDB", "Gemini AI"],
-    },
-    {
-      name: "myRoots-2",
-      displayName: "My Roots",
-      tagline: "Family journal web app",
-      tech: ["JavaScript", "HTML5", "SCSS", "Tailwind", "Firebase"],
-    },
-  ];
-
-  const list = document.getElementById("gallery");
-
-  if (rotatingContent) {
-    rotatingContent.addEventListener("animationend", () => {
-      rotatingContent.classList.add("repeating-animation");
-    });
-  }
-
-  const observerOptions = {
-    root: document.querySelector(".outer-wrapper"),
-    threshold: 0.8,
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Add bold class from top banner scroll
-        entry.target.classList.add("visible");
-      } else {
-        // Remove bold class from top banner scroll
-        entry.target.classList.remove("visible");
-      }
-    });
-  }, observerOptions);
-
-  bannerRotatingItems.forEach((item) => {
-    observer.observe(item);
-  });
-
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    const viewportHeight =
-      window.innerHeight || document.documentElement.clientHeight;
-    return (
-      rect.top < viewportHeight * 0.8 && // element distance from top
-      rect.bottom >= viewportHeight * 0.2 // element distance from bottom
-    );
-  }
-
-  if (moreSection) {
-    window.addEventListener("scroll", () => {
-      if (isElementInViewport(moreSection)) {
-        const scrollY = window.scrollY;
-        const newHeight = 1 + scrollY / 3; // Height based upon the scroll position
-
-        // Styles to be updated
-        moreSection.style.height = `${newHeight}px`;
-        moreSection.style.transition = "200ms";
-        if (moreSection.style.height >= "200px") {
-          moreSection.style.padding = "30px";
-        }
-      } else {
-      }
-    });
-  } else {
-    console.log("Element not found");
-  }
-
-  if (list) {
-    personalProjects.forEach((project) => {
-      const listItem = document.createElement("div");
-      listItem.classList.add("gallery-item");
-
-      const titleItem = document.createElement("h3");
-      titleItem.textContent = project.displayName;
-      listItem.appendChild(titleItem);
-
-      const taglineItem = document.createElement("p");
-      taglineItem.classList.add("gallery-item-tagline");
-      taglineItem.textContent = project.tagline;
-      listItem.appendChild(taglineItem);
-
-      const tagsWrapper = document.createElement("div");
-      tagsWrapper.classList.add("gallery-item-tags");
-      project.tech.forEach((techName) => {
-        const tag = document.createElement("span");
-        tag.textContent = techName;
-        tagsWrapper.appendChild(tag);
-      });
-      listItem.appendChild(tagsWrapper);
-
-      list.appendChild(listItem);
-    });
-  }
-
   // Keep the copyright year current automatically.
   const copyrightYear = document.getElementById("copyright-year");
   if (copyrightYear) {
     copyrightYear.textContent = new Date().getFullYear();
   }
+
+  // ---- Command palette: cycling query text ----
+  const paletteQueries = [
+    "search skills, projects, experience",
+    "react native",
+    "dashboards",
+    "full-stack",
+  ];
+  let queryIndex = 0;
+  const queryEl = document.getElementById("palette-query");
+  if (queryEl) {
+    setInterval(() => {
+      queryIndex = (queryIndex + 1) % paletteQueries.length;
+      queryEl.textContent = paletteQueries[queryIndex];
+    }, 2600);
+  }
+
+  // ---- Command palette: cycling active row ----
+  const resultRows = document.querySelectorAll("#palette-results .presult");
+  let paletteIndex = 0;
+  function updatePalette() {
+    resultRows.forEach((r, i) => r.classList.toggle("active", i === paletteIndex));
+    paletteIndex = (paletteIndex + 1) % resultRows.length;
+  }
+  if (resultRows.length) {
+    updatePalette();
+    setInterval(updatePalette, 1400);
+  }
+
+  // Clicking a result scrolls to the relevant section.
+  resultRows.forEach((row) => {
+    row.addEventListener("click", () => {
+      const target = row.getAttribute("data-target");
+      if (target) {
+        const el = document.querySelector(target);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  });
 });
+
+// ---- Copy email to clipboard ----
+function copyEmail(button) {
+  const email = "namit.jaitly.nj@gmail.com";
+  const hint = document.getElementById("copy-hint");
+  const finish = (message) => {
+    if (hint) {
+      hint.textContent = message;
+      setTimeout(() => {
+        hint.textContent = "Click to copy the address";
+      }, 2000);
+    }
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard
+      .writeText(email)
+      .then(() => finish("Copied to clipboard!"))
+      .catch(() => finish("Couldn't copy — email is above"));
+  } else {
+    finish("Couldn't copy — email is above");
+  }
+}
 
 openSlider = () => {
   let slider = document.getElementById("contacts-slider");

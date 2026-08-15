@@ -12,15 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@100..800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <script
@@ -32,294 +24,400 @@
 
   <body>
     <div class="main-wrapper">
-      <div class="background-blur"></div>
+      <header class="flex align-center justify-between">
+        <div class="name-logo">
+          <img src="./images/Name.svg" alt="page logo image created by Namit" />
+        </div>
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li>
+              <a class="nav-resume" href="./Namit_Jaitly_Resume.pdf" download
+                >Resume</a
+              >
+            </li>
+            <li class="nav-icon">
+              <a onclick="openSlider()"><i class="fa-solid fa-user"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav" onclick="openMobileNav()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+          <div onclick="openMobileNav()" class="close-mobile-menu">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="./Namit_Jaitly_Resume.pdf" download>Resume</a></li>
+            <li>
+              <a onclick="openSlider()"><i class="fa-solid fa-user"></i> About</a>
+            </li>
+          </ul>
+        </div>
+      </header>
 
-      <!-- Website Banner -->
-      <div class="top-banner">
-        <header class="flex align-center justify-between">
-          <div class="name-logo">
-            <img
-              src="./images/Name.svg"
-              alt="page logo image created by Namit"
-            />
-          </div>
-          <nav class="desktop-nav" aria-label="Main Navigation">
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#education">Education</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li>
-                <a onclick="openSlider()"><i class="fa-solid fa-user"></i></a>
-              </li>
-            </ul>
-          </nav>
-          <div class="mobile-nav" id="mobile-nav" onclick="openMobileNav()">
-            <i class="fa-solid fa-bars"></i>
-          </div>
-          <div id="mobile-menu" class="mobile-menu">
-            <div onclick="openMobileNav()" class="close-mobile-menu">
-              <i class="fa-solid fa-xmark"></i>
+      <!-- Hero -->
+      <section class="hero" id="home">
+        <div class="wrap hero-inner">
+          <div class="hero-eyebrow">Vancouver, BC · Full-Stack Developer</div>
+          <h1>
+            Building <span class="accent">web &amp; mobile products</span>
+            with React &amp; React Native
+          </h1>
+          <p class="lede">
+            I'm a full-stack developer working across React, React Native
+            (Expo), Angular, and Next.js — shipping production mobile apps
+            through Expo/EAS pipelines and integrating backends with Node.js,
+            MongoDB, and Supabase.
+          </p>
+
+          <div class="palette">
+            <div class="palette-input">
+              <span class="prompt">&gt;</span>
+              <span id="palette-query">search skills, projects, experience</span>
+              <span class="palette-cursor"></span>
             </div>
-            <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#education">Education</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li>
-                <a onclick="openSlider()"><i class="fa-solid fa-user"></i></a>
-              </li>
-            </ul>
-          </div>
-        </header>
-        <div class="banner-content" id="home">
-          <div class="main-tagline">
-            <p>I am proficient in</p>
-          </div>
-          <div class="outer-wrapper">
-            <div class="rotating-content">
-              <div class="inner-rotate">
-                <p>React &amp; React Native (Expo)</p>
-                <p>TypeScript</p>
-                <p>Next.js</p>
-                <p>Node.js &amp; MongoDB</p>
-                <p>Supabase</p>
-                <p>Angular</p>
-                <!-- repeat -->
-                <p>React &amp; React Native (Expo)</p>
-                <p>TypeScript</p>
-                <p>Next.js</p>
-                <p>Node.js &amp; MongoDB</p>
-                <p>Supabase</p>
-                <p>Angular</p>
-                <!-- repeat -->
-                <p>React &amp; React Native (Expo)</p>
-                <p>TypeScript</p>
-                <p>Next.js</p>
-                <p>Node.js &amp; MongoDB</p>
-                <p>Supabase</p>
-                <p>Angular</p>
+            <div class="palette-results" id="palette-results">
+              <div class="presult" data-target="#skills">
+                <span>React Native (Expo)</span><span class="rtype">skill</span>
+              </div>
+              <div class="presult" data-target="#projects">
+                <span>Zyra — habit app for kids</span
+                ><span class="rtype">project</span>
+              </div>
+              <div class="presult" data-target="#experience">
+                <span>Lexen Systems Corp</span
+                ><span class="rtype">experience</span>
+              </div>
+              <div class="presult" data-target="#skills">
+                <span>TypeScript</span><span class="rtype">skill</span>
+              </div>
+              <div class="presult" data-target="#projects">
+                <span>RackTrack — POS app</span><span class="rtype">project</span>
+              </div>
+              <div class="presult" data-target="#experience">
+                <span>Softobiz Technologies</span
+                ><span class="rtype">experience</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Main Section -->
-      <main class="test">
-        <section class="bio-section">
-          <div class="section-h1-wrapper">
-            <!-- Bio Section -->
-            <h1 class="section-heading">
-              <span
-                >Full-Stack <span class="text-bright">Developer</span></span
-              >
-              <span
-                >Building <span class="text-bright">Web &amp; Mobile</span>
-                Products with</span
-              >
-              <span class="text-bright">React &amp; React Native</span>
-            </h1>
+      <!-- Skill orbit -->
+      <section class="section" id="skills">
+        <div class="wrap">
+          <span class="section-eyebrow">Stack</span>
+          <h2 class="section-title">Everywhere I work across the stack</h2>
+          <p class="section-sub">
+            Mobile and web, front-end and backend — here's what's actually in
+            rotation day to day.
+          </p>
+        </div>
+        <div class="orbit-field">
+          <svg class="orbit-lines" viewBox="0 0 620 380">
+            <line x1="310" y1="190" x2="290" y2="18" />
+            <line x1="310" y1="190" x2="460" y2="65" />
+            <line x1="310" y1="190" x2="555" y2="180" />
+            <line x1="310" y1="190" x2="440" y2="310" />
+            <line x1="310" y1="190" x2="185" y2="325" />
+            <line x1="310" y1="190" x2="12" y2="197" />
+            <line x1="310" y1="190" x2="62" y2="75" />
+          </svg>
+          <div class="orbit-center">NAMIT<br />JAITLY</div>
+          <div class="orbit-node n1">React</div>
+          <div class="orbit-node mobile n2">React Native (Expo)</div>
+          <div class="orbit-node n3">Next.js</div>
+          <div class="orbit-node backend n4">Supabase</div>
+          <div class="orbit-node n5">Angular</div>
+          <div class="orbit-node backend n6">MongoDB &amp; Node.js</div>
+          <div class="orbit-node mobile n7">TypeScript</div>
+        </div>
+        <div class="orbit-fallback">
+          <span>React</span>
+          <span>React Native (Expo)</span>
+          <span>TypeScript</span>
+          <span>Next.js</span>
+          <span>Angular</span>
+          <span>Node.js</span>
+          <span>MongoDB</span>
+          <span>Supabase</span>
+        </div>
+      </section>
+
+      <!-- Layers -->
+      <section class="section" style="padding-top: 0">
+        <div class="wrap">
+          <span class="section-eyebrow">Full-Stack</span>
+          <h2 class="section-title">How it fits together</h2>
+          <p class="section-sub">
+            From the phone in someone's hand to the database behind it.
+          </p>
+        </div>
+        <div class="layers-strip">
+          <div class="layer-seg">
+            <div class="l-title">Mobile</div>
+            <div class="l-items">React Native · Expo · EAS Build</div>
           </div>
-          <div class="more-section">
-            <div class="section-wrapper">
-              <p>
-                I'm a full-stack developer working across web and mobile,
-                specializing in React, React Native (Expo), Angular, and
-                Next.js. I build scalable front-end architectures, integrate
-                REST APIs and backend services like Node.js, MongoDB, and
-                Supabase, and ship production mobile apps through Expo/EAS
-                build pipelines. I like owning features end-to-end — from
-                state management and offline-first data to CI/CD and release
-                management — with a strong foundation in clean, accessible UI
-                and cross-platform compatibility.
+          <div class="layer-seg">
+            <div class="l-title">Web</div>
+            <div class="l-items">React · Next.js · Angular</div>
+          </div>
+          <div class="layer-seg">
+            <div class="l-title">Backend</div>
+            <div class="l-items">Node.js · MongoDB · Supabase</div>
+          </div>
+          <div class="layer-seg">
+            <div class="l-title">Tooling</div>
+            <div class="l-items">TypeScript · Storybook · Git</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects bento -->
+      <section class="section" id="projects">
+        <div class="wrap">
+          <span class="section-eyebrow">Projects</span>
+          <h2 class="section-title">Personal Projects</h2>
+          <p class="section-sub">
+            Things I've built end-to-end, outside of client work.
+          </p>
+        </div>
+        <div class="bento-grid">
+          <div class="bento-tile">
+            <div class="bento-icon">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3>Zyra</h3>
+            <p>
+              Habit-building app for children — a recurring task engine with
+              timezone-aware scheduling, real-time status tracking, and an
+              AR-based reward system.
+            </p>
+            <div class="bento-tags">
+              <span>React Native</span>
+              <span>Expo</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+              <span>Gemini AI</span>
+            </div>
+          </div>
+          <div class="bento-tile">
+            <div class="bento-icon">
+              <i class="fa-solid fa-cash-register"></i>
+            </div>
+            <h3>RackTrack</h3>
+            <p>
+              POS &amp; inventory management app with Gemini AI integration to
+              automate menu-item and ingredient form-filling.
+            </p>
+            <div class="bento-tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+              <span>Gemini AI</span>
+            </div>
+          </div>
+          <div class="bento-tile">
+            <div class="bento-icon"><i class="fa-solid fa-book"></i></div>
+            <h3>My Roots</h3>
+            <p>
+              A family journal web app — a single-page site in vanilla
+              JavaScript with a dynamic content-injection architecture, built
+              with a small team.
+            </p>
+            <div class="bento-tags">
+              <span>JavaScript</span>
+              <span>HTML5</span>
+              <span>SCSS</span>
+              <span>Tailwind</span>
+              <span>Firebase</span>
+            </div>
+          </div>
+        </div>
+        <p class="bento-note">
+          Screenshots and live links coming soon for each project.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="section" id="experience">
+        <div class="wrap">
+          <span class="section-eyebrow">Career</span>
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+        <div class="cards-grid three wrap">
+          <div class="card">
+            <div class="card-heading">
+              <h3>Frontend Developer (Contract)</h3>
+            </div>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">Lexen Systems Corp — Remote</p>
+                <p class="experience-duration">Jun 2026-Present</p>
+              </div>
+              <p class="card-details">
+                Building a vehicle insurance appraisal app in React Native
+                (Expo), currently focused on the inspection photo capture
+                workflow — camera capture, damage marker tagging, and gallery
+                import. Using Zustand and TanStack Query for state/data sync,
+                expo-sqlite for local-first persistence, and managing the EAS
+                build pipeline.
               </p>
             </div>
           </div>
-        </section>
-        <!-- Personal projects -->
-        <div class="working-gallery">
-          <div class="section-subheading">
-            <h2>Personal Projects</h2>
-          </div>
-          <div class="works-gallery animation" id="gallery"></div>
-        </div>
-        <!-- Experience Section-->
-        <div class="experience-section" id="experience">
-          <div class="section-subheading">
-            <h2>Work Experience</h2>
-          </div>
-          <div class="cards-grid three">
-            <div class="card">
-              <div class="card-heading">
-                <h3>Frontend Developer (Contract)</h3>
-              </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">Lexen Systems Corp — Remote</p>
-                  <p class="experience-duration">Jun 2026-Present</p>
-                </div>
-                <p class="card-details">
-                  Building a vehicle insurance appraisal app in React Native
-                  (Expo), currently focused on the inspection photo capture
-                  workflow — camera capture, damage marker tagging, and
-                  gallery import. Using Zustand and TanStack Query for
-                  state/data sync, expo-sqlite for local-first persistence,
-                  and managing the EAS build pipeline.
-                </p>
-              </div>
+          <div class="card">
+            <div class="card-heading">
+              <h3>Frontend Developer</h3>
             </div>
-            <div class="card">
-              <div class="card-heading">
-                <h3>Frontend Developer</h3>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">Softobiz Technologies Pvt Ltd.</p>
+                <p class="experience-duration">Jul 2022-Jul 2024</p>
               </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">Softobiz Technologies Pvt Ltd.</p>
-                  <p class="experience-duration">Jul 2022-Jul 2024</p>
-                </div>
-                <p class="card-details">
-                  Built and led development of a server-side rendered
-                  dashboard in Next.js (Material UI, Supabase) for real estate
-                  investors, with CASL-based role permissions and integrated
-                  Stripe payments. Contributed to an Angular-based SaaS
-                  billing platform, and used Storybook to document and
-                  maintain a library of reusable UI components.
-                </p>
-              </div>
+              <p class="card-details">
+                Built and led development of a server-side rendered dashboard
+                in Next.js (Material UI, Supabase) for real estate investors,
+                with CASL-based role permissions and integrated Stripe
+                payments. Contributed to an Angular-based SaaS billing
+                platform, and used Storybook to document and maintain a
+                library of reusable UI components.
+              </p>
             </div>
-            <div class="card">
-              <div class="card-heading">
-                <h3>Frontend Developer</h3>
+          </div>
+          <div class="card">
+            <div class="card-heading">
+              <h3>Frontend Developer</h3>
+            </div>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">NSPL IT Company</p>
+                <p class="experience-duration">Jan 2022-Jun 2022</p>
               </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">NSPL IT Company</p>
-                  <p class="experience-duration">Jan 2022-Jun 2022</p>
-                </div>
-                <p class="card-details">
-                  Built a vendor management web application in Angular and
-                  Angular Material as a unified platform for sellers to manage
-                  retail operations across Amazon, Flipkart, and Myntra —
-                  including product listing monitoring, inventory management,
-                  order tracking, and centralized pricing control.
-                </p>
-              </div>
+              <p class="card-details">
+                Built a vendor management web application in Angular and
+                Angular Material as a unified platform for sellers to manage
+                retail operations across Amazon, Flipkart, and Myntra —
+                including product listing monitoring, inventory management,
+                order tracking, and centralized pricing control.
+              </p>
             </div>
           </div>
         </div>
-        <!-- Education Section -->
-        <div class="education-section" id="education">
-          <div class="section-subheading">
-            <h2>Education</h2>
+      </section>
+
+      <!-- Education -->
+      <section class="section" id="education">
+        <div class="wrap">
+          <span class="section-eyebrow">Education</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="cards-grid three wrap">
+          <div class="card">
+            <div class="card-heading">
+              <h3>Web &amp; Mobile Application Design &amp; Development</h3>
+            </div>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">Langara College</p>
+                <p class="experience-duration">2024-2026</p>
+              </div>
+              <div class="card-img">
+                <img
+                  src="./images/langara_college.jpg"
+                  alt="Langara_College photo taken from google"
+                />
+              </div>
+            </div>
           </div>
-          <div class="cards-grid three">
-            <div class="card">
-              <div class="card-heading">
-                <h3>Web &amp; Mobile Application Design &amp; Development</h3>
+          <div class="card">
+            <div class="card-heading">
+              <h3>Professional Training, Web Development</h3>
+            </div>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">NSPL Research &amp; Training Centre</p>
+                <p class="experience-duration">Feb-Oct 2021</p>
               </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">Langara College</p>
-                  <p class="experience-duration">2024-2026</p>
-                </div>
-                <div class="card-img">
-                  <img
-                    src="./images/langara_college.jpg"
-                    alt="Langara_College photo taken from google"
-                  />
-                </div>
+              <div class="card-img">
+                <img
+                  src="./images/nspl_rtc.jpeg"
+                  alt="NSPL_RTC photo taken from google"
+                />
               </div>
             </div>
-            <div class="card">
-              <div class="card-heading">
-                <h3>Professional Training, Web Development</h3>
-              </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">NSPL Research &amp; Training Centre</p>
-                  <p class="experience-duration">Feb-Oct 2021</p>
-                </div>
-                <div class="card-img">
-                  <img
-                    src="./images/nspl_rtc.jpeg"
-                    alt="NSPL_RTC photo taken from google"
-                  />
-                </div>
-              </div>
+          </div>
+          <div class="card">
+            <div class="card-heading">
+              <h3>Bachelor of Commerce</h3>
             </div>
-            <div class="card">
-              <div class="card-heading">
-                <h3>Bachelor of Commerce</h3>
+            <div class="card-content">
+              <div class="header">
+                <p class="company-name">DAV College (GNDU)</p>
+                <p class="experience-duration">2017-2020</p>
               </div>
-              <div class="card-content">
-                <div class="header">
-                  <p class="company-name">DAV College (GNDU)</p>
-                  <p class="experience-duration">2017-2020</p>
-                </div>
-                <div class="card-img">
-                  <img
-                    src="./images/dav_college.jpg"
-                    alt="DAV_college phoyo taken from college website"
-                  />
-                </div>
+              <div class="card-img">
+                <img
+                  src="./images/dav_college.jpg"
+                  alt="DAV_college phoyo taken from college website"
+                />
               </div>
             </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      <!-- Contact -->
       <footer id="contact">
-        <div>
-          <div class="footer-heading">
-            <h3>Reach Out to me!</h3>
+        <div class="contact-inner">
+          <h3>Reach out</h3>
+          <p class="contact-sub">
+            Best way to reach me is email — happy to talk about frontend
+            work, mobile builds, or anything in between.
+          </p>
+          <div class="contact-actions">
+            <a
+              class="btn btn-primary"
+              href="mailto:namit.jaitly.nj@gmail.com"
+            >
+              <i class="fa-solid fa-envelope"></i> Email me
+            </a>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              onclick="copyEmail(this)"
+            >
+              <i class="fa-solid fa-copy"></i>
+              <span>namit.jaitly.nj@gmail.com</span>
+            </button>
           </div>
-          <form
-            class="footer-wrapper"
-            action="mailto:namit.jaitly.nj@gmail.com"
-            method="post"
-            enctype="text/plain"
-          >
-            <div class="upper-grid">
-              <div class="inner-grid">
-                <div class="form-field">
-                  <label for="name">Name:</label>
-                  <input type="text" id="name" name="name" required />
-                </div>
-                <div class="form-field">
-                  <label for="email">Email:</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-              </div>
-              <div class="form-field textarea">
-                <label for="message">Message:</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-            </div>
-            <div class="button">
-              <input type="submit" value="Send Email" />
-            </div>
-          </form>
+          <p class="copy-hint" id="copy-hint">Click to copy the address</p>
+          <p class="copyright">
+            &copy; <span id="copyright-year">2026</span> Namit Jaitly
+          </p>
         </div>
       </footer>
-      <p class="copyright">&copy; <span id="copyright-year">2026</span> Namit Jaitly</p>
+
       <aside id="contacts-slider">
         <div class="slider-wrapper">
           <div class="slider-header">
-            <h2>Hello, Welcome to my profile!</h2>
-            <div
-              onclick="openSlider()"
-              style="font-size: 18px; cursor: pointer"
-            >
+            <h2>Hello, welcome to my profile!</h2>
+            <div onclick="openSlider()" class="close-slider">
               <i class="fa-solid fa-xmark"></i>
             </div>
           </div>
           <div class="skills">
-            <h2 class="section-heading">Skills</h2>
+            <h2 class="skills-heading">Skills</h2>
             <p>
               As a full-stack developer, I work across React, React Native
               (Expo), Angular, and Next.js — building scalable front-end
